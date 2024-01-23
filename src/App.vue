@@ -28,7 +28,7 @@ onMounted(async () => {
       <h2 class="text-4xl md:text-7xl pt-2 font-bold -translate-x-2">ueMemes</h2>
     </div>
     <h4 class="text-md md:text-2xl text-center px-6 pt-2 pb-4 tracking-wider text-slate-300">
-      24 fresh Memes Templates to make your day!
+      24 fresh Memes from Reddit to make your day!
     </h4>
     <section
       class="md:columns-4 columns-2 break-inside-avoid-column gap-6 mt-2 py-3"
