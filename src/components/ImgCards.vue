@@ -1,13 +1,18 @@
 <script setup>
 import { saveAs } from 'file-saver'
+import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
   data: {
     type: Object,
     required: true
   }
 })
 
+const twitterUrl = computed(
+  () =>
+    `https://twitter.com/intent/tweet?text=${props.data.title}&url=${props.data.postLink}/&hashtags=${props.data.subreddit},meme,reddit`
+)
 const downloadImage = (imageUrl) => {
   saveAs(imageUrl, 'VueMeme.jpg')
 }
@@ -27,7 +32,7 @@ const downloadImage = (imageUrl) => {
     </figure>
     <div class="card-body px-3 py-4">
       <p class="text-sm md:text-normal text-zinc-300">
-        {{ data.title }}
+        {{ data.title }} <br /><span class="text-green-600 text-xs">r/{{ data.subreddit }}</span>
       </p>
       <div class="card-actions justify-end">
         <button
@@ -36,6 +41,14 @@ const downloadImage = (imageUrl) => {
         >
           <img src="../assets/download.svg" alt="Download" />
         </button>
+        <a
+          :href="twitterUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary btn-circle btn-outline btn-sm"
+        >
+          <img src="../assets/twitter.svg" class="w-6" />
+        </a>
         <a :href="data.postLink" target="_blank" rel="noopener noreferrer">
           <button class="btn btn-sm btn-success text-sm">Visit</button>
         </a>
